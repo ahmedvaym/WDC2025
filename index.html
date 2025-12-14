@@ -1,0 +1,1677 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feeali Women's Development Committee</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        @font-face {
+            font-family: 'SameeAvasThaana';
+            src: url(Mv_MAG_Round_XBold.otf);
+        }
+
+        :root {
+            --primary: #8a1b61;
+            --primary-light: #b2247d;
+            --secondary: #ff7eb3;
+            --accent: #ffd166;
+            --dark: #1a1a2e;
+            --light: #f8f9fa;
+            --gray: #6c757d;
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #fefefe;
+            color: var(--dark);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Header and Logo */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            transition: var(--transition);
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            z-index: 1002;
+        }
+
+        .logo {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(138, 27, 97, 0.3);
+            transition: var(--transition);
+            background: white;
+            border: 3px solid var(--primary);
+        }
+
+        .logo-img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            padding: 5px;
+        }
+
+        .logo-text {
+            font-family: 'SameeAvasThaana';
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        /* Mobile Menu Button */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: var(--primary);
+            cursor: pointer;
+            padding: 5px;
+            z-index: 1002;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            justify-content: center;
+            align-items: center;
+            transition: var(--transition);
+        }
+
+        .mobile-menu-btn:hover {
+            background-color: rgba(138, 27, 97, 0.1);
+        }
+
+        .mobile-menu-btn.active {
+            color: white;
+            background-color: var(--primary);
+        }
+
+        /* Main Layout */
+        .main-container {
+            display: flex;
+            min-height: 100vh;
+            padding-top: 90px;
+            position: relative;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 280px;
+            background: linear-gradient(to bottom, #ffffff, #f9f7ff);
+            padding: 30px 20px;
+            box-shadow: 5px 0 25px rgba(0, 0, 0, 0.05);
+            position: fixed;
+            height: calc(100vh - 90px);
+            overflow-y: auto;
+            z-index: 999;
+            transition: transform 0.3s ease;
+        }
+
+        /* Mobile Sidebar Overlay */
+        .sidebar-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 998;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .sidebar-overlay.active {
+            display: block;
+            opacity: 1;
+        }
+
+        .sidebar-nav {
+            margin-bottom: 40px;
+        }
+
+        .nav-item {
+            list-style: none;
+            margin-bottom: 10px;
+        }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px 20px;
+            background-color: white;
+            border-radius: 12px;
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            border-left: 4px solid transparent;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .nav-link:hover, .nav-link.active {
+            background-color: var(--primary);
+            color: white;
+            border-left-color: var(--accent);
+            transform: translateX(5px);
+        }
+
+        .nav-link i {
+            font-size: 20px;
+            width: 24px;
+            text-align: center;
+        }
+
+        /* Content Area */
+        .content {
+            flex: 1;
+            margin-left: 280px;
+            padding: 20px;
+            max-width: calc(100% - 280px);
+            transition: margin-left 0.3s ease;
+        }
+
+        /* Video Hero Section */
+        .video-hero {
+            position: relative;
+            height: 70vh;
+            border-radius: 20px;
+            overflow: hidden;
+            margin-bottom: 30px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+
+        .video-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .video-container video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(138, 27, 97, 0.1), rgba(26, 26, 46, 0.8));
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+            color: white;
+        }
+
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        /* Content Sections */
+        .section {
+            background-color: white;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            display: none;
+        }
+
+        .section.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        /* Committee Members */
+        .members-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .member-card {
+            background-color: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .member-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .member-img-container {
+            position: relative;
+            width: 100%;
+            height: 280px;
+            overflow: hidden;
+            background-color: #f8f9fa;
+        }
+
+        .member-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center top;
+        }
+
+        .watermark-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('final logo WDC Feeali A.png');
+            background-size: 100px 100px;
+            opacity: 0.1;
+            pointer-events: none;
+        }
+
+        .party-logo-container {
+            position: absolute;
+            bottom: 15px;
+            right: 15px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+            border: 2px solid var(--primary);
+            overflow: hidden;
+        }
+
+        .party-logo {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            padding: 5px;
+        }
+
+        .party-name {
+            position: absolute;
+            bottom: 60px;
+            right: 15px;
+            background: rgba(138, 27, 97, 0.9);
+            color: white;
+            padding: 4px 8px;
+            border-radius: 5px;
+            font-size: 0.7rem;
+            font-weight: 600;
+        }
+
+        .member-info {
+            padding: 20px;
+        }
+
+        .member-name {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 5px;
+        }
+
+        .member-role {
+            color: var(--primary);
+            font-weight: 500;
+            margin-bottom: 10px;
+            display: block;
+            font-size: 1rem;
+        }
+
+        .member-bio {
+            color: var(--gray);
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+
+        .member-contact {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-top: 10px;
+            font-size: 0.85rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .contact-link {
+            color: var(--primary);
+            text-decoration: none;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            word-break: break-all;
+        }
+
+        .contact-link:hover {
+            color: var(--primary-light);
+            text-decoration: underline;
+        }
+
+        /* News Section */
+        .news-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .news-card {
+            background-color: #f9f9ff;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: var(--transition);
+            border: 1px solid #eee;
+            cursor: pointer;
+        }
+
+        .news-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .news-image {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+
+        .news-date {
+            background-color: var(--primary);
+            color: white;
+            padding: 8px 15px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .news-content {
+            padding: 20px;
+        }
+
+        .news-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--dark);
+        }
+
+        .news-excerpt {
+            color: var(--gray);
+            margin-bottom: 12px;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .read-more {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            transition: var(--transition);
+            font-size: 0.9rem;
+        }
+
+        /* News Modal */
+        .news-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .news-modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .news-modal-content {
+            background-color: white;
+            border-radius: 15px;
+            max-width: 800px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            transform: translateY(20px);
+            transition: transform 0.3s ease;
+        }
+
+        .news-modal.active .news-modal-content {
+            transform: translateY(0);
+        }
+
+        .news-modal-header {
+            padding: 20px 25px 0;
+        }
+
+        .news-modal-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .news-modal-date {
+            color: var(--gray);
+            font-size: 0.85rem;
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .news-modal-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .news-modal-body {
+            padding: 0 25px 25px;
+            line-height: 1.6;
+            color: var(--dark);
+            font-size: 0.95rem;
+        }
+
+        .news-modal-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            z-index: 10;
+        }
+
+        /* Gallery */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 10px;
+        }
+
+        .gallery-item {
+            border-radius: 10px;
+            overflow: hidden;
+            height: 150px;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 30px 20px 20px;
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+
+        .footer-section {
+            flex: 1;
+            min-width: 200px;
+            margin-bottom: 20px;
+        }
+
+        .footer-title {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            color: var(--accent);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.3rem;
+            transition: var(--transition);
+        }
+
+        .copyright {
+            padding-top: 15px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.85rem;
+            color: #aaa;
+        }
+
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .stat-item {
+            background: linear-gradient(135deg, #f8f9fa, #ffffff);
+            padding: 20px 15px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+            border: 1px solid #eee;
+        }
+
+        .stat-item h3 {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+
+        /* Event List */
+        .event-list {
+            margin-top: 10px;
+        }
+
+        .event-item {
+            background: white;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 8px;
+            border-left: 3px solid var(--primary);
+            font-size: 0.9rem;
+        }
+
+        .event-date {
+            font-weight: 600;
+            color: var(--primary);
+            font-size: 0.85rem;
+        }
+
+        /* Council Section */
+        .council-info {
+            background: #f9f7ff;
+            padding: 20px;
+            border-radius: 12px;
+            margin-top: 20px;
+        }
+
+        /* Reports Section */
+        .reports-list {
+            margin-top: 20px;
+        }
+
+        .report-item {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            border-left: 4px solid var(--primary);
+        }
+
+        .download-btn {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 8px 18px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 10px;
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .sidebar {
+                transform: translateX(-100%);
+                width: 300px;
+                height: 100vh;
+                top: 0;
+                padding-top: 90px;
+                box-shadow: 5px 0 25px rgba(0, 0, 0, 0.15);
+            }
+
+            .sidebar.active {
+                transform: translateX(0);
+            }
+
+            .content {
+                margin-left: 0;
+                max-width: 100%;
+                padding: 15px;
+            }
+
+            .mobile-menu-btn {
+                display: flex;
+            }
+
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.1rem;
+                padding: 0 10px;
+            }
+
+            .video-hero {
+                height: 50vh;
+                border-radius: 15px;
+            }
+
+            .section {
+                padding: 20px;
+                margin-bottom: 20px;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            .members-grid, .news-container {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            }
+
+            .member-img-container {
+                height: 250px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                padding: 12px 15px;
+            }
+
+            .logo {
+                width: 50px;
+                height: 50px;
+            }
+
+            .logo-text {
+                font-size: 16px;
+            }
+
+            .main-container {
+                padding-top: 80px;
+            }
+
+            .hero-title {
+                font-size: 1.8rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+
+            .footer-content {
+                flex-direction: column;
+            }
+
+            .footer-section {
+                min-width: 100%;
+            }
+
+            .video-hero {
+                height: 40vh;
+            }
+
+            .section {
+                padding: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 1.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 0.9rem;
+            }
+
+            .member-img-container {
+                height: 220px;
+            }
+
+            .party-name {
+                font-size: 0.6rem;
+                bottom: 55px;
+            }
+
+            .party-logo-container {
+                width: 35px;
+                height: 35px;
+            }
+
+            .member-contact {
+                font-size: 0.8rem;
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .news-modal-image {
+                height: 200px;
+            }
+
+            .news-modal-header {
+                padding: 15px 20px 0;
+            }
+
+            .news-modal-title {
+                font-size: 1.3rem;
+            }
+
+            .news-modal-body {
+                padding: 0 20px 20px;
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .logo-text {
+                font-size: 14px;
+            }
+
+            .hero-title {
+                font-size: 1.3rem;
+            }
+
+            .member-card {
+                margin: 0 -5px;
+                border-radius: 0;
+            }
+
+            .section {
+                padding: 12px;
+                margin-bottom: 15px;
+            }
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 3px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary-light);
+        }
+
+        /* Touch-friendly improvements */
+        @media (hover: none) and (pointer: coarse) {
+            .nav-link:hover, .nav-link.active {
+                transform: none;
+            }
+
+            .member-card:hover {
+                transform: none;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            }
+
+            .news-card:hover {
+                transform: none;
+            }
+
+            .contact-link, .nav-link, .download-btn {
+                min-height: 44px;
+                min-width: 44px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .mobile-menu-btn {
+                min-width: 44px;
+                min-height: 44px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header with Logo and Mobile Menu Button -->
+    <header class="header">
+        <div class="logo-container">
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <a href="#" class="logo" id="homeLogo">
+                <img src="final logo WDC Feeali A.png" alt="Feeali Women's Development Committee Logo" class="logo-img" onerror="this.style.display='none'; document.querySelector('.fallback-logo').style.display='flex';">
+                <div class="fallback-logo" style="display: none;">
+                    <i class="fas fa-fist-raised"></i>
+                </div>
+            </a>
+            <div class="logo-text">ނިލަންދެއަތޮޅު އުތުރުބުރީ ފީއަލީ އ.ތ.މ ކޮމެޓީ</div>
+        </div>
+        <div class="header-contact">
+            <i class="fas fa-envelope"></i> contact@feealiwdc.org
+        </div>
+    </header>
+
+    <!-- Sidebar Overlay for Mobile -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- Main Container -->
+    <div class="main-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar" id="sidebar">
+            <ul class="sidebar-nav">
+                <li class="nav-item">
+                    <a href="#" class="nav-link active" data-target="home">
+                        <i class="fas fa-home"></i>
+                        <span>Home</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" data-target="committee">
+                        <i class="fas fa-users"></i>
+                        <span>Committee Members</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" data-target="council">
+                        <i class="fas fa-landmark"></i>
+                        <span>Council</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" data-target="reports">
+                        <i class="fas fa-file-alt"></i>
+                        <span>Reports</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" data-target="news">
+                        <i class="fas fa-newspaper"></i>
+                        <span>Daily News</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" data-target="gallery">
+                        <i class="fas fa-images"></i>
+                        <span>Gallery</span>
+                    </a>
+                </li>
+            </ul>
+
+            <div class="sidebar-widget">
+                <h3 class="widget-title">Upcoming Events</h3>
+                <div class="event-list">
+                    <div class="event-item">
+                        <div class="event-date">June 15, 2025</div>
+                        <div class="event-title">Women's Entrepreneurship Workshop</div>
+                    </div>
+                    <div class="event-item">
+                        <div class="event-date">June 22, 2025</div>
+                        <div class="event-title">Health Awareness Seminar</div>
+                    </div>
+                    <div class="event-item">
+                        <div class="event-date">July 5, 2025</div>
+                        <div class="event-title">Annual General Meeting</div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="content">
+            <!-- Home Section with Video -->
+            <section class="section active" id="home">
+                <div class="video-hero">
+                    <div class="video-container">
+                        <video autoplay muted loop id="islandVideo">
+                            <source src="video_2025-12-12_00-11-15.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <div class="video-overlay">
+                        <h1 class="hero-title">Feeali Women's Development Committee</h1>
+                        <p class="hero-subtitle">Empowering women, transforming communities. Together we build a brighter future for all women in Feeali through education, advocacy, and sustainable development.</p>
+                        <a href="#" class="nav-link" data-target="committee" style="background-color: var(--accent); color: var(--dark); margin-top: 20px; display: inline-block; width: auto; padding: 12px 25px; border-left: none;">Meet Our Committee</a>
+                    </div>
+                </div>
+
+                <div class="quick-stats">
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <h3>500+</h3>
+                            <p>Women Empowered</p>
+                        </div>
+                        <div class="stat-item">
+                            <h3>50+</h3>
+                            <p>Projects Completed</p>
+                        </div>
+                        <div class="stat-item">
+                            <h3>5</h3>
+                            <p>Committee Members</p>
+                        </div>
+                        <div class="stat-item">
+                            <h3>15</h3>
+                            <p>Years of Service</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Committee Section -->
+            <section class="section" id="committee">
+                <h2 class="section-title">Committee Members</h2>
+                <p class="section-description">Meet our 5 dedicated committee members representing different political parties, working together for women's development in Feeali.</p>
+                
+                <div class="members-grid" id="membersContainer">
+                    <!-- Committee members will be loaded here via JS -->
+                </div>
+            </section>
+
+            <!-- Council Section -->
+            <section class="section" id="council">
+                <h2 class="section-title">Council</h2>
+                <p>The Feeali Women's Development Council works in partnership with local government and international organizations to create policies and programs that support women's advancement.</p>
+                
+                <div class="council-info">
+                    <h3>Our Mission</h3>
+                    <p>To create an inclusive society where women have equal opportunities in education, employment, leadership, and decision-making processes.</p>
+                    
+                    <h3>Strategic Priorities</h3>
+                    <ul>
+                        <li>Economic empowerment through skill development</li>
+                        <li>Health and wellness programs</li>
+                        <li>Legal aid and advocacy</li>
+                        <li>Education and literacy initiatives</li>
+                        <li>Political participation and leadership training</li>
+                    </ul>
+                    
+                    <h3>Council Structure</h3>
+                    <p>The council consists of representatives from various political parties, community leaders, and women's rights advocates who collaborate to develop and implement women-focused policies.</p>
+                </div>
+            </section>
+
+            <!-- Reports Section -->
+            <section class="section" id="reports">
+                <h2 class="section-title">Reports & Publications</h2>
+                <p>Access our annual reports, research publications, and project documentation.</p>
+                
+                <div class="reports-list">
+                    <div class="report-item">
+                        <h3>Annual Report 2024</h3>
+                        <p>Comprehensive overview of our activities, achievements, and financial report for the year 2024.</p>
+                        <a href="#" class="download-btn">Download PDF</a>
+                    </div>
+                    <div class="report-item">
+                        <h3>Women's Economic Participation Study</h3>
+                        <p>Research on women's employment and entrepreneurship opportunities in Feeali region.</p>
+                        <a href="#" class="download-btn">Download PDF</a>
+                    </div>
+                    <div class="report-item">
+                        <h3>Health Initiative Progress Report</h3>
+                        <p>Evaluation of our community health programs for women and children.</p>
+                        <a href="#" class="download-btn">Download PDF</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- News Section with Images -->
+            <section class="section" id="news">
+                <h2 class="section-title">Daily News & Updates</h2>
+                <p>Stay updated with the latest news, events, and announcements from the Feeali Women's Development Committee.</p>
+                
+                <div class="news-container" id="newsContainer">
+                    <!-- News items with images will be loaded here via JS -->
+                </div>
+            </section>
+
+            <!-- Gallery Section -->
+            <section class="section" id="gallery">
+                <h2 class="section-title">Gallery</h2>
+                <p>Visual highlights from our events, programs, and community activities.</p>
+                
+                <div class="gallery-grid" id="galleryContainer">
+                    <!-- Gallery items will be loaded here via JS -->
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3 class="footer-title">Feeali Women's Development Committee</h3>
+                <p>Empowering women for a better tomorrow. Together we can create lasting change in our community.</p>
+            </div>
+            <div class="footer-section">
+                <h3 class="footer-title">Contact Us</h3>
+                <p><i class="fas fa-map-marker-alt"></i> 123 Main Street, Feeali Island</p>
+                <p><i class="fas fa-phone"></i> +960 123 4567</p>
+                <p><i class="fas fa-envelope"></i> contact@feealiwdc.org</p>
+            </div>
+            <div class="footer-section">
+                <h3 class="footer-title">Follow Us</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2025 Feeali Women's Development Committee. All Rights Reserved.
+        </div>
+    </footer>
+
+    <!-- News Modal -->
+    <div class="news-modal" id="newsModal">
+        <div class="news-modal-content">
+            <button class="news-modal-close" id="newsModalClose">&times;</button>
+            <div class="news-modal-header">
+                <h2 class="news-modal-title" id="newsModalTitle">News Title</h2>
+                <div class="news-modal-date" id="newsModalDate">
+                    <span>June 10, 2025</span>
+                    <span class="news-modal-category" id="newsModalCategory">Meetings</span>
+                </div>
+            </div>
+            <img class="news-modal-image" id="newsModalImage" src="" alt="News Image">
+            <div class="news-modal-body" id="newsModalBody">
+                <!-- News content will be inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // DOM Elements
+        const navLinks = document.querySelectorAll('.nav-link');
+        const sections = document.querySelectorAll('.section');
+        const homeLogo = document.getElementById('homeLogo');
+        const membersContainer = document.getElementById('membersContainer');
+        const newsContainer = document.getElementById('newsContainer');
+        const galleryContainer = document.getElementById('galleryContainer');
+        const newsModal = document.getElementById('newsModal');
+        const newsModalClose = document.getElementById('newsModalClose');
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const sidebar = document.getElementById('sidebar');
+        const sidebarOverlay = document.getElementById('sidebarOverlay');
+
+        // Committee Members Data
+        const committeeMembers = [
+            {
+                name: "Aishath Shafiya",
+                role: "Chairperson",
+                bio: "Leading the committee since 2020 with extensive experience in women's rights advocacy and community development.",
+                party: "Maldives Democratic Party (MDP)",
+                partyShort: "MDP",
+                partyLogo: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/Maldives_Democratic_Party_logo.svg/300px-Maldives_Democratic_Party_logo.svg.png",
+                email: "shafiya@feealiwdc.org",
+                phone: "+960 789 0123",
+                image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+            },
+            {
+                name: "Fathimath Saeeda",
+                role: "Vice Chairperson",
+                bio: "Specializes in economic empowerment programs and microfinance initiatives for women entrepreneurs.",
+                party: "Progressive Party of Maldives (PPM)",
+                partyShort: "PPM",
+                partyLogo: "https://upload.wikimedia.org/wikipedia/en/thumb/b/b3/Progressive_Party_of_Maldives_logo.svg/300px-Progressive_Party_of_Maldives_logo.svg.png",
+                email: "saeeda@feealiwdc.org",
+                phone: "+960 789 0124",
+                image: "https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+            },
+            {
+                name: "Aminath Latheefa",
+                role: "Secretary",
+                bio: "Manages committee operations and coordinates with local government and partner organizations.",
+                party: "Jumhooree Party (JP)",
+                partyShort: "JP",
+                partyLogo: "https://upload.wikimedia.org/wikipedia/en/thumb/8/81/Jumhooree_Party_logo.svg/300px-Jumhooree_Party_logo.svg.png",
+                email: "latheefa@feealiwdc.org",
+                phone: "+960 789 0125",
+                image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+            },
+            {
+                name: "Mariyam Shazna",
+                role: "Treasurer",
+                bio: "Financial expert with a focus on sustainable funding and budget management for development projects.",
+                party: "Adhaalath Party (AP)",
+                partyShort: "AP",
+                partyLogo: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/Adhaalath_Party_logo.svg/300px-Adhaalath_Party_logo.svg.png",
+                email: "shazna@feealiwdc.org",
+                phone: "+960 789 0126",
+                image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+            },
+            {
+                name: "Hawwa Nafeesa",
+                role: "Public Relations Officer",
+                bio: "Handles communications, media relations, and community outreach programs for the committee.",
+                party: "Maldives Democratic Party (MDP)",
+                partyShort: "MDP",
+                partyLogo: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/Maldives_Democratic_Party_logo.svg/300px-Maldives_Democratic_Party_logo.svg.png",
+                email: "nafeesa@feealiwdc.org",
+                phone: "+960 789 0127",
+                image: "https://images.unsplash.com/photo-1544725176-7c40e5a71c5e?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+            }
+        ];
+
+        // News Data
+        const newsItems = [
+            {
+                date: "June 10, 2025",
+                title: "Multi-Party Committee Meeting Success",
+                excerpt: "Representatives from all 5 political parties attended the quarterly committee meeting to discuss women's development initiatives.",
+                fullContent: `<p>In a landmark meeting held at the Feeali Community Center, representatives from all five major political parties came together for the quarterly committee meeting.</p>
+                <p>The meeting focused on developing a unified strategy for women's economic empowerment programs across party lines.</p>`,
+                image: "https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                category: "Meetings"
+            },
+            {
+                date: "June 5, 2025",
+                title: "Cross-Party Collaboration on Women's Health",
+                excerpt: "All committee members regardless of political affiliation collaborated on a health initiative benefiting over 500 women.",
+                fullContent: `<p>The Feeali Women's Development Committee launched a comprehensive women's health initiative this week.</p>
+                <p>The program provided free health screenings, nutritional counseling, and wellness workshops to over 500 women across the region.</p>`,
+                image: "https://images.unsplash.com/photo-1551601651-2a8555f1a136?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                category: "Health"
+            }
+        ];
+
+        // Gallery Images
+        const galleryImages = [
+            {id: 1, desc: "Committee Meeting", category: "Meeting", image: "https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300&q=80"},
+            {id: 2, desc: "Health Awareness Program", category: "Health", image: "https://images.unsplash.com/photo-1551601651-2a8555f1a136?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300&q=80"},
+            {id: 3, desc: "Leadership Training", category: "Training", image: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300&q=80"},
+            {id: 4, desc: "Community Outreach", category: "Outreach", image: "https://images.unsplash.com/photo-1517048676732-d65bc937f952?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300&q=80"}
+        ];
+
+        // Initialize the page
+        function initPage() {
+            // Generate committee members
+            committeeMembers.forEach((member, index) => {
+                const memberCard = document.createElement('div');
+                memberCard.className = 'member-card';
+                memberCard.dataset.index = index;
+                memberCard.innerHTML = `
+                    <div class="member-img-container">
+                        <div class="watermark-overlay"></div>
+                        <img src="${member.image}" alt="${member.name}" class="member-img">
+                        <div class="party-name">${member.partyShort}</div>
+                        <div class="party-logo-container">
+                            <img src="${member.partyLogo}" alt="${member.partyShort} Logo" class="party-logo">
+                        </div>
+                    </div>
+                    <div class="member-info">
+                        <h3 class="member-name">${member.name}</h3>
+                        <span class="member-role">${member.role}</span>
+                        <p class="member-bio">${member.bio}</p>
+                        <div class="member-contact">
+                            <div class="contact-item">
+                                <a href="mailto:${member.email}" class="contact-link">
+                                    <i class="fas fa-envelope"></i> ${member.email}
+                                </a>
+                            </div>
+                            <div class="contact-item">
+                                <a href="tel:${member.phone}" class="contact-link">
+                                    <i class="fas fa-phone"></i> ${member.phone}
+                                </a>
+                            </div>
+                        </div>
+                        <div style="margin-top: 10px; font-size: 0.85rem; color: var(--primary); font-weight: 500;">
+                            <i class="fas fa-landmark"></i> ${member.party}
+                        </div>
+                    </div>
+                `;
+                membersContainer.appendChild(memberCard);
+            });
+
+            // Generate news items
+            newsItems.forEach((news, index) => {
+                const newsCard = document.createElement('div');
+                newsCard.className = 'news-card';
+                newsCard.dataset.index = index;
+                newsCard.innerHTML = `
+                    <img src="${news.image}" alt="${news.title}" class="news-image">
+                    <div class="news-date">
+                        <span>${news.date}</span>
+                        <span class="news-category">${news.category}</span>
+                    </div>
+                    <div class="news-content">
+                        <h3 class="news-title">${news.title}</h3>
+                        <p class="news-excerpt">${news.excerpt}</p>
+                        <a href="#" class="read-more" data-index="${index}">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                `;
+                newsContainer.appendChild(newsCard);
+            });
+
+            // Generate gallery items
+            galleryImages.forEach(image => {
+                const galleryItem = document.createElement('div');
+                galleryItem.className = 'gallery-item';
+                galleryItem.innerHTML = `
+                    <img src="${image.image}" alt="${image.desc}" loading="lazy">
+                `;
+                galleryContainer.appendChild(galleryItem);
+            });
+
+            // Set up navigation
+            setupNavigation();
+            
+            // Setup mobile menu
+            setupMobileMenu();
+            
+            // Setup news modal
+            setupNewsModal();
+            
+            // Setup gallery modal
+            setupGalleryModal();
+            
+            // Setup member modals
+            setupMemberModals();
+            
+            // Check if logo loaded
+            checkLogo();
+        }
+
+        // Setup mobile menu functionality
+        function setupMobileMenu() {
+            function toggleSidebar() {
+                sidebar.classList.toggle('active');
+                mobileMenuBtn.classList.toggle('active');
+                sidebarOverlay.classList.toggle('active');
+                mobileMenuBtn.innerHTML = sidebar.classList.contains('active') ? 
+                    '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+            }
+
+            mobileMenuBtn.addEventListener('click', toggleSidebar);
+            sidebarOverlay.addEventListener('click', toggleSidebar);
+
+            // Close sidebar when clicking on a nav link (mobile)
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    if (window.innerWidth <= 992) {
+                        toggleSidebar();
+                    }
+                });
+            });
+        }
+
+        // Set up navigation functionality
+        function setupNavigation() {
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('data-target');
+                    
+                    navLinks.forEach(nav => nav.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    sections.forEach(section => {
+                        section.classList.remove('active');
+                        if (section.id === targetId) {
+                            section.classList.add('active');
+                        }
+                    });
+                    
+                    // Scroll to top of content on mobile
+                    if (window.innerWidth <= 992) {
+                        document.querySelector('.content').scrollTo({ top: 0, behavior: 'smooth' });
+                    } else {
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                    }
+                });
+            });
+
+            homeLogo.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                navLinks.forEach(nav => nav.classList.remove('active'));
+                document.querySelector('[data-target="home"]').classList.add('active');
+                
+                sections.forEach(section => {
+                    section.classList.remove('active');
+                    if (section.id === 'home') {
+                        section.classList.add('active');
+                    }
+                });
+                
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        }
+
+        // Setup news modal functionality
+        function setupNewsModal() {
+            newsModalClose.addEventListener('click', () => {
+                newsModal.classList.remove('active');
+            });
+            
+            newsModal.addEventListener('click', (e) => {
+                if (e.target === newsModal) {
+                    newsModal.classList.remove('active');
+                }
+            });
+            
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && newsModal.classList.contains('active')) {
+                    newsModal.classList.remove('active');
+                }
+            });
+            
+            newsContainer.addEventListener('click', (e) => {
+                const readMoreLink = e.target.closest('.read-more');
+                const newsCard = e.target.closest('.news-card');
+                
+                if (readMoreLink || newsCard) {
+                    e.preventDefault();
+                    const index = readMoreLink ? readMoreLink.dataset.index : newsCard.dataset.index;
+                    showNewsModal(index);
+                }
+            });
+        }
+
+        // Setup gallery modal functionality
+        function setupGalleryModal() {
+            galleryContainer.addEventListener('click', function(e) {
+                const galleryItem = e.target.closest('.gallery-item');
+                if (galleryItem) {
+                    const imgSrc = galleryItem.querySelector('img').src;
+                    const imgAlt = galleryItem.querySelector('img').alt;
+                    
+                    const modal = document.createElement('div');
+                    modal.style.cssText = `
+                        position: fixed;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        background: rgba(0,0,0,0.95);
+                        z-index: 2000;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        flex-direction: column;
+                        padding: 20px;
+                    `;
+                    
+                    modal.innerHTML = `
+                        <button style="position: absolute; top: 20px; right: 20px; background: none; border: none; color: white; font-size: 30px; cursor: pointer; z-index: 1;">×</button>
+                        <img src="${imgSrc}" alt="${imgAlt}" style="max-width: 100%; max-height: 70%; border-radius: 10px; object-fit: contain;">
+                        <p style="color: white; margin-top: 20px; text-align: center; font-size: 1rem;">${imgAlt}</p>
+                    `;
+                    
+                    document.body.appendChild(modal);
+                    
+                    modal.querySelector('button').addEventListener('click', function() {
+                        document.body.removeChild(modal);
+                    });
+                    
+                    modal.addEventListener('click', function(e) {
+                        if (e.target === modal) {
+                            document.body.removeChild(modal);
+                        }
+                    });
+                }
+            });
+        }
+
+        // Setup member modal functionality
+        function setupMemberModals() {
+            membersContainer.addEventListener('click', function(e) {
+                const memberCard = e.target.closest('.member-card');
+                if (memberCard) {
+                    const index = memberCard.dataset.index;
+                    const member = committeeMembers[index];
+                    
+                    const modal = document.createElement('div');
+                    modal.style.cssText = `
+                        position: fixed;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        background: rgba(0,0,0,0.95);
+                        z-index: 2000;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        padding: 20px;
+                    `;
+                    
+                    modal.innerHTML = `
+                        <div style="background: white; border-radius: 15px; max-width: 500px; width: 100%; overflow-y: auto; max-height: 90vh; position: relative;">
+                            <button style="position: absolute; top: 15px; right: 15px; background: var(--primary); color: white; border: none; width: 36px; height: 36px; border-radius: 50%; cursor: pointer; font-size: 20px; z-index: 1;">×</button>
+                            <div style="padding: 40px 25px 25px; text-align: center;">
+                                <div style="width: 150px; height: 150px; border-radius: 50%; overflow: hidden; margin: 0 auto 20px; background: #f8f9fa; padding: 10px;">
+                                    <img src="${member.image}" alt="${member.name}" style="width: 100%; height: 100%; object-fit: cover; object-position: top;">
+                                </div>
+                                <h2 style="color: var(--primary); margin-bottom: 10px; font-size: 1.4rem;">${member.name}</h2>
+                                <h3 style="color: var(--primary-light); margin-bottom: 15px; font-size: 1.1rem;">${member.role}</h3>
+                                <div style="display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 20px;">
+                                    <img src="${member.partyLogo}" alt="${member.partyShort}" style="width: 30px; height: 30px; object-fit: contain;">
+                                    <span style="background: var(--primary); color: white; padding: 6px 15px; border-radius: 20px; font-size: 0.9rem; font-weight: 600;">
+                                        ${member.party}
+                                    </span>
+                                </div>
+                                <p style="margin-bottom: 20px; line-height: 1.6; text-align: left; font-size: 0.95rem;">${member.bio}</p>
+                                <div style="display: flex; flex-direction: column; gap: 15px; margin-top: 20px;">
+                                    <a href="mailto:${member.email}" style="text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 10px; color: var(--primary);">
+                                        <i class="fas fa-envelope"></i>
+                                        <span>${member.email}</span>
+                                    </a>
+                                    <a href="tel:${member.phone}" style="text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 10px; color: var(--primary);">
+                                        <i class="fas fa-phone"></i>
+                                        <span>${member.phone}</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    
+                    document.body.appendChild(modal);
+                    
+                    const closeBtn = modal.querySelector('button');
+                    closeBtn.addEventListener('click', function() {
+                        document.body.removeChild(modal);
+                    });
+                    
+                    modal.addEventListener('click', function(e) {
+                        if (e.target === modal) {
+                            document.body.removeChild(modal);
+                        }
+                    });
+                }
+            });
+        }
+
+        // Show news modal with full content
+        function showNewsModal(index) {
+            const news = newsItems[index];
+            
+            newsModalTitle.textContent = news.title;
+            newsModalDate.querySelector('span').textContent = news.date;
+            newsModalCategory.textContent = news.category;
+            newsModalImage.src = news.image;
+            newsModalImage.alt = news.title;
+            newsModalBody.innerHTML = news.fullContent;
+            
+            newsModal.classList.add('active');
+            newsModal.querySelector('.news-modal-content').scrollTop = 0;
+        }
+
+        // Check if logo loaded properly
+        function checkLogo() {
+            const logoImg = document.querySelector('.logo-img');
+            if (logoImg) {
+                logoImg.onerror = function() {
+                    this.style.display = 'none';
+                    const fallback = document.querySelector('.fallback-logo');
+                    if (fallback) fallback.style.display = 'flex';
+                };
+            }
+        }
+
+        // Handle responsive video sizing
+        function handleVideoSize() {
+            const videoHero = document.querySelector('.video-hero');
+            if (!videoHero) return;
+            
+            if (window.innerWidth <= 768) {
+                videoHero.style.height = '40vh';
+            } else if (window.innerWidth <= 992) {
+                videoHero.style.height = '50vh';
+            } else {
+                videoHero.style.height = '70vh';
+            }
+        }
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', initPage);
+
+        // Handle window resize
+        window.addEventListener('resize', handleVideoSize);
+        handleVideoSize();
+
+        // Close sidebar on window resize if open on desktop
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 992 && sidebar.classList.contains('active')) {
+                sidebar.classList.remove('active');
+                mobileMenuBtn.classList.remove('active');
+                sidebarOverlay.classList.remove('active');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            }
+        });
+    </script>
+</body>
+</html>
